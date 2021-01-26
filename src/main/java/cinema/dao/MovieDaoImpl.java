@@ -1,5 +1,6 @@
 package cinema.dao;
 
+import cinema.exception.DataProcessingException;
 import cinema.lib.Dao;
 import cinema.model.Movie;
 import cinema.util.HibernateUtil;
@@ -24,7 +25,7 @@ public class MovieDaoImpl implements MovieDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new RuntimeException("Can't insert movie entity", e);
+            throw new DataProcessingException("Can't insert movie entity", e);
         } finally {
             if (session != null) {
                 session.close();
@@ -38,7 +39,7 @@ public class MovieDaoImpl implements MovieDao {
             Query<Movie> getAllMoviesQuery = session.createQuery("FROM Movie", Movie.class);
             return getAllMoviesQuery.getResultList();
         } catch (Exception e) {
-            throw new RuntimeException("Can't insert movie entity", e);
+            throw new DataProcessingException("Can't insert movie entity", e);
         }
     }
 }

@@ -17,6 +17,5 @@ public class Application {
         movie = movieService.add(movie);
 
         movieService.getAll().forEach(System.out::println);
-
     }
 }
