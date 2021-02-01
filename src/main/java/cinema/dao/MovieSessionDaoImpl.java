@@ -1,25 +1,32 @@
 package cinema.dao;
 
 import cinema.exception.DataProcessingException;
-import cinema.model.Movie;
+import cinema.lib.Dao;
 import cinema.model.MovieSession;
 import cinema.util.HibernateUtil;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+@Dao
 public class MovieSessionDaoImpl implements MovieSessionDao {
     @Override
     public List<MovieSession> findAvailableSessions(Long movieId, LocalDate date) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            Query<MovieSession> getAllMoviesQuery = session.createQuery("FROM MovieSession as mv" +
-                    "INSERT Movie as m " +
-                    "INSERT CinemaHall" +
-                    "", MovieSession.class);
-            return getAllMoviesQuery.getResultList();
+            Query<MovieSession> getallmoviesquery = session.createQuery("FROM MovieSession AS ms "
+                    + "left join fetch ms.movie "
+                    + "left join fetch ms.cinemaHall "
+                    + "where ms.movie.id =:movie_id "
+                    + "and date_format(ms.showTime, '%Y-%m-%d')=:date", MovieSession.class);
+            getallmoviesquery.setParameter("movie_id", movieId);
+            getallmoviesquery.setParameter("date", DateTimeFormatter.ISO_LOCAL_DATE.format(date));
+            String test = date.toString();
+            return getallmoviesquery.getResultList();
 
+        }
     }
 
     @Override

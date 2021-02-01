@@ -1,13 +1,15 @@
 package cinema.dao;
 
 import cinema.exception.DataProcessingException;
-import cinema.service.CinemaHall;
+import cinema.lib.Dao;
+import cinema.model.CinemaHall;
 import cinema.util.HibernateUtil;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+@Dao
 public class CinemaHallDaoImpl implements CinemaHallDao {
     @Override
     public CinemaHall add(CinemaHall cinemaHall) {
@@ -34,7 +36,7 @@ public class CinemaHallDaoImpl implements CinemaHallDao {
     @Override
     public List<CinemaHall> getAll() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            Query<CinemaHall> getAllCinemaHall = session.createQuery("FROM Cinemahall", CinemaHall.class);
+            Query<CinemaHall> getAllCinemaHall = session.createQuery("FROM CinemaHall", CinemaHall.class);
             return getAllCinemaHall.getResultList();
         } catch (Exception e) {
             throw new DataProcessingException("Can't insert movie entity", e);

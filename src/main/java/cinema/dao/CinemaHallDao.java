@@ -1,6 +1,6 @@
 package cinema.dao;
 
-import cinema.service.CinemaHall;
+import cinema.model.CinemaHall;
 import java.util.List;
 
 public interface CinemaHallDao {
