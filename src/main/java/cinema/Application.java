@@ -21,20 +21,17 @@ public class Application {
             .getInstance(MovieSessionService.class);
 
     public static void main(String[] args) {
-        CinemaHall cinemaHall = new CinemaHall();
         Movie movie = new Movie();
-        MovieSession movieSession = new MovieSession();
         movie.setTitle("Fruit-Shop");
         movie.setDescription("Horror");
         movie = movieService.add(movie);
-
+        MovieSession movieSession = new MovieSession();
         movieSession.setMovie(movie);
         movieSession.setShowTime(LocalDateTime.now());
-
+        CinemaHall cinemaHall = new CinemaHall();
         cinemaHall = cinemaHallService.add(cinemaHall);
         movieSession.setCinemaHall(cinemaHall);
         cinemaHallService.getAll().forEach(System.out::println);
-
         movieSessionService.add(movieSession);
         movieSessionService.findAvailableSessions(1L, LocalDate.now()).forEach(System.out::println);
     }

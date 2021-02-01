@@ -36,7 +36,8 @@ public class CinemaHallDaoImpl implements CinemaHallDao {
     @Override
     public List<CinemaHall> getAll() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            Query<CinemaHall> getAllCinemaHall = session.createQuery("FROM CinemaHall", CinemaHall.class);
+            Query<CinemaHall> getAllCinemaHall
+                    = session.createQuery("FROM CinemaHall", CinemaHall.class);
             return getAllCinemaHall.getResultList();
         } catch (Exception e) {
             throw new DataProcessingException("Can't insert movie entity", e);
