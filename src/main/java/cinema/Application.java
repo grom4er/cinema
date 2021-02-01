@@ -27,7 +27,7 @@ public class Application {
         movie = movieService.add(movie);
         MovieSession movieSession = new MovieSession();
         movieSession.setMovie(movie);
-        movieSession.setShowTime(LocalDateTime.now());
+        movieSession.setShowTime(LocalDateTime.of(2021,02,1,15,5));
         CinemaHall cinemaHall = new CinemaHall();
         cinemaHall = cinemaHallService.add(cinemaHall);
         movieSession.setCinemaHall(cinemaHall);
