@@ -24,6 +24,9 @@ public class MovieSessionDaoImpl implements MovieSessionDao {
             getallmoviesquery.setParameter("movie_id", movieId);
             getallmoviesquery.setParameter("date", DateTimeFormatter.ISO_LOCAL_DATE.format(date));
             return getallmoviesquery.getResultList();
+        } catch (Exception e) {
+            throw new DataProcessingException("Problem to take movie session with parameters: "
+                    + movieId + " at " + date + ".", e);
         }
     }
 
