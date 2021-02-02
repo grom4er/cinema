@@ -27,13 +27,12 @@ public class Application {
         movie = movieService.add(movie);
         MovieSession movieSession = new MovieSession();
         movieSession.setMovie(movie);
-        movieSession.setShowTime(LocalDateTime.of(2021,02,1,15,5));
+        movieSession.setShowTime(LocalDateTime.of(2021, 02, 1, 15, 5));
         CinemaHall cinemaHall = new CinemaHall();
         cinemaHall = cinemaHallService.add(cinemaHall);
         movieSession.setCinemaHall(cinemaHall);
         cinemaHallService.getAll().forEach(System.out::println);
         movieSessionService.add(movieSession);
-        movieSessionService.findAvailableSessions(1L, LocalDate.now()).forEach(System.out::println);
+        movieSessionService.findAvailableSessions(movie.getId(), LocalDate.now()).forEach(System.out::println);
     }
 }
-

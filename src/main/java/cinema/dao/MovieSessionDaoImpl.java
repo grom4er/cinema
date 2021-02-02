@@ -23,7 +23,6 @@ public class MovieSessionDaoImpl implements MovieSessionDao {
                     + "and date_format(ms.showTime, '%Y-%m-%d')=:date", MovieSession.class);
             getallmoviesquery.setParameter("movie_id", movieId);
             getallmoviesquery.setParameter("date", DateTimeFormatter.ISO_LOCAL_DATE.format(date));
-            String test = date.toString();
             return getallmoviesquery.getResultList();
         }
     }
