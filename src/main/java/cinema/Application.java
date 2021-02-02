@@ -33,6 +33,7 @@ public class Application {
         movieSession.setCinemaHall(cinemaHall);
         cinemaHallService.getAll().forEach(System.out::println);
         movieSessionService.add(movieSession);
-        movieSessionService.findAvailableSessions(movie.getId(), LocalDate.now()).forEach(System.out::println);
+        movieSessionService.findAvailableSessions(movie.getId(),
+                LocalDate.now()).forEach(System.out::println);
     }
 }
