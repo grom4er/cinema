@@ -1,30 +1,32 @@
-package cinema.dao;
+package cinema.dao.impl;
 
+import cinema.dao.MovieDao;
 import cinema.exception.DataProcessingException;
 import cinema.lib.Dao;
-import cinema.model.User;
+import cinema.model.Movie;
 import cinema.util.HibernateUtil;
-import java.util.Optional;
+import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 @Dao
-public class UserDaoImpl implements UserDao {
+public class MovieDaoImpl implements MovieDao {
     @Override
-    public User add(User user) {
+    public Movie add(Movie movie) {
         Transaction transaction = null;
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
-            session.save(user);
+            session.save(movie);
             transaction.commit();
-            return user;
+            return movie;
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new DataProcessingException("Can't add user: " + user, e);
+            throw new DataProcessingException("Can't insert movie entity " + movie, e);
         } finally {
             if (session != null) {
                 session.close();
@@ -33,13 +35,12 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public Optional<User> findByEmail(String email) {
+    public List<Movie> getAll() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            return session.createQuery("from User where email=:email", User.class)
-                    .setParameter("email", email)
-                    .uniqueResultOptional();
+            Query<Movie> getAllMoviesQuery = session.createQuery("FROM Movie", Movie.class);
+            return getAllMoviesQuery.getResultList();
         } catch (Exception e) {
-            throw new DataProcessingException("Can't find user by email " + email + ". ", e);
+            throw new DataProcessingException("Can't insert movie entity", e);
         }
     }
 }

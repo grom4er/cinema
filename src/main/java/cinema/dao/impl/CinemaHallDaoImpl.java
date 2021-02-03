@@ -1,5 +1,6 @@
-package cinema.dao;
+package cinema.dao.impl;
 
+import cinema.dao.CinemaHallDao;
 import cinema.exception.DataProcessingException;
 import cinema.lib.Dao;
 import cinema.model.CinemaHall;

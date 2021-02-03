@@ -1,31 +1,31 @@
-package cinema.dao;
+package cinema.dao.impl;
 
+import cinema.dao.UserDao;
 import cinema.exception.DataProcessingException;
 import cinema.lib.Dao;
-import cinema.model.Movie;
+import cinema.model.User;
 import cinema.util.HibernateUtil;
-import java.util.List;
+import java.util.Optional;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 
 @Dao
-public class MovieDaoImpl implements MovieDao {
+public class UserDaoImpl implements UserDao {
     @Override
-    public Movie add(Movie movie) {
+    public User add(User user) {
         Transaction transaction = null;
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
-            session.save(movie);
+            session.save(user);
             transaction.commit();
-            return movie;
+            return user;
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new DataProcessingException("Can't insert movie entity " + movie, e);
+            throw new DataProcessingException("Can't add user: " + user, e);
         } finally {
             if (session != null) {
                 session.close();
@@ -34,12 +34,13 @@ public class MovieDaoImpl implements MovieDao {
     }
 
     @Override
-    public List<Movie> getAll() {
+    public Optional<User> findByEmail(String email) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            Query<Movie> getAllMoviesQuery = session.createQuery("FROM Movie", Movie.class);
-            return getAllMoviesQuery.getResultList();
+            return session.createQuery("from User where email=:email", User.class)
+                    .setParameter("email", email)
+                    .uniqueResultOptional();
         } catch (Exception e) {
-            throw new DataProcessingException("Can't insert movie entity", e);
+            throw new DataProcessingException("Can't find user by email " + email + ". ", e);
         }
     }
 }
