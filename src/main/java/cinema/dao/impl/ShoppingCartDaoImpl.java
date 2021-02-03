@@ -60,7 +60,6 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
-                ;
             }
             throw new DataProcessingException("Can't update Shopping cart with id:"
                     + shoppingCart.getId() + ". ", e);

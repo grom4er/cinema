@@ -30,8 +30,9 @@ public class Application {
             (ShoppingCartService) injector.getInstance(ShoppingCartService.class);
 
     public static void main(String[] args) throws RegistrationException, AuthenticationException {
-    //        testMovieCinemaHallSession();
-    //        testUserAndAuthentication();
+        testMovieCinemaHallSession();
+        testUserAndAuthentication();
+        testCartService();
     }
 
     public static void testMovieCinemaHallSession() {
@@ -76,6 +77,7 @@ public class Application {
         cinemaHall = cinemaHallService.add(cinemaHall);
         movieSession.setCinemaHall(cinemaHall);
         movieSession.setShowTime(LocalDateTime.of(2021, 02, 3, 20, 5));
+        movieSessionService.add(movieSession);
         shoppingCartService.addSession(movieSession, user);
         System.out.println(shoppingCartService.getByUser(user));
     }
