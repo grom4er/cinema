@@ -8,7 +8,6 @@ import cinema.lib.Inject;
 import cinema.lib.Service;
 import cinema.model.User;
 import cinema.service.UserService;
-
 import java.util.Optional;
 
 @Service

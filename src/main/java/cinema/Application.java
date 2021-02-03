@@ -23,8 +23,8 @@ public class Application {
             .getInstance(CinemaHallService.class);
     private static final MovieSessionService movieSessionService = (MovieSessionService) injector
             .getInstance(MovieSessionService.class);
-    private static final AuthenticationService authenticationService = (AuthenticationService) injector
-            .getInstance(AuthenticationService.class);
+    private static final AuthenticationService authenticationService =
+            (AuthenticationService) injector.getInstance(AuthenticationService.class);
 
     public static void main(String[] args) throws RegistrationException, AuthenticationException {
         //   testMovieCinemaHallSession();
@@ -48,7 +48,8 @@ public class Application {
                 LocalDate.now()).forEach(System.out::println);
     }
 
-    public static void testUserAndAuthentication() throws RegistrationException, AuthenticationException {
+    public static void testUserAndAuthentication()
+            throws RegistrationException, AuthenticationException {
         User user = new User();
         user.setEmail("tutut@gmal.com");
         user.setPassword("123");
