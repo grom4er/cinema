@@ -28,7 +28,7 @@ public class Application {
 
     public static void main(String[] args) throws RegistrationException, AuthenticationException {
         //   testMovieCinemaHallSession();
-        testUserAndAuthentication();
+      //  testUserAndAuthentication();
     }
 
     public static void testMovieCinemaHallSession() {
