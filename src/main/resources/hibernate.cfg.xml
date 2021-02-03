@@ -3,7 +3,7 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name = "hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+        <property name = "hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
         <property name = "hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name = "hibernate.connection.url">jdbc:mysql://localhost/cinema?serverTimezone=UTC</property>
         <property name = "hibernate.connection.username">root</property>
@@ -13,5 +13,6 @@
         <mapping class="cinema.model.Movie"/>
         <mapping class="cinema.model.CinemaHall"/>
         <mapping class="cinema.model.MovieSession"/>
+        <mapping class="cinema.model.User"/>
     </session-factory>
 </hibernate-configuration>
