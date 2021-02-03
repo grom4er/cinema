@@ -3,7 +3,6 @@ package cinema.security;
 import static cinema.util.HashUtil.hashPassword;
 
 import cinema.exception.AuthenticationException;
-import cinema.exception.RegistrationException;
 import cinema.lib.Inject;
 import cinema.lib.Service;
 import cinema.model.User;
@@ -26,11 +25,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     }
 
     @Override
-    public User register(String email, String password) throws RegistrationException {
-        if (userService.findByEmail(email).isPresent()) {
-            throw new RegistrationException("Email " + email
-                    + " actually is register. Try another please.");
-        }
+    public User register(String email, String password) {
         User user = new User();
         user.setEmail(email);
         user.setPassword(password);
