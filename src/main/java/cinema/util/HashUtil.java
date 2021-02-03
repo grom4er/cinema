@@ -1,5 +1,6 @@
 package cinema.util;
 
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -18,8 +19,10 @@ public class HashUtil {
         String hashedPasswordString = "";
         try {
             MessageDigest md = MessageDigest.getInstance(CODE);
-            byte[] hashedPassword = md.digest(password.getBytes());
-            hashedPasswordString = new String(hashedPassword);
+            byte[] hashedPassword = md.digest(password.getBytes(StandardCharsets.UTF_8));
+            for (byte hash : hashedPassword) {
+                hashedPasswordString += hash;
+            }
             md.update(salt);
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException("Can't find algorithm", e);
