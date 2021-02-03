@@ -3,9 +3,7 @@ package cinema.service.impl;
 import cinema.dao.UserDao;
 import cinema.lib.Inject;
 import cinema.lib.Service;
-import cinema.model.ShoppingCart;
 import cinema.model.User;
-import cinema.service.ShoppingCartService;
 import cinema.service.UserService;
 import cinema.util.HashUtil;
 import java.util.Optional;
@@ -14,8 +12,6 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
     @Inject
     private UserDao userDao;
-    @Inject
-    private ShoppingCartService shoppingCartService;
 
     @Override
     public User add(User user) {
@@ -24,7 +20,6 @@ public class UserServiceImpl implements UserService {
         String hashedPassword = HashUtil.hashPassword(password, salt);
         user.setPassword(hashedPassword);
         user.setSalt(salt);
-        shoppingCartService.registerNewShoppingCart(user);
         return userDao.add(user);
     }
 
