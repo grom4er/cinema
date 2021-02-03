@@ -59,7 +59,6 @@ public class Application {
         user.setPassword("123");
         authenticationService.register(user.getEmail(), user.getPassword());
         System.out.println(authenticationService.login(user.getEmail(), user.getPassword()));
-        // authenticationService.login(user.getEmail(),"1222");
     }
 
     public static void testCartService() {

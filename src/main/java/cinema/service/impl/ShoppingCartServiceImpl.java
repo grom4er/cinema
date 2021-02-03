@@ -25,7 +25,6 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         ShoppingCart shoppingCart = getByUser(user);
         shoppingCart.getTickets().add(ticket);
         shoppingCartDao.update(shoppingCart);
-
     }
 
     @Override
