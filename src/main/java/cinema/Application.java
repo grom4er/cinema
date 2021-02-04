@@ -61,11 +61,11 @@ public class Application {
         System.out.println(authenticationService.login(user.getEmail(), user.getPassword()));
     }
 
-    public static void testCartService() {
+    public static void testCartService() throws RegistrationException {
         User user = new User();
         user.setEmail("adriano@gmail.com");
         user.setPassword("123");
-        shoppingCartService.registerNewShoppingCart(user);
+        user = authenticationService.register(user.getEmail(), user.getPassword());
         Movie movie = new Movie();
         movie.setTitle("Hibernate");
         movie.setDescription("Fantastic");
