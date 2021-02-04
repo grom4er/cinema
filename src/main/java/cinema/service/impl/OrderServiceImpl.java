@@ -1,5 +1,7 @@
 package cinema.service.impl;
 
+import cinema.dao.OrderDao;
+import cinema.lib.Inject;
 import cinema.lib.Service;
 import cinema.model.Order;
 import cinema.model.ShoppingCart;
@@ -9,6 +11,9 @@ import java.util.List;
 
 @Service
 public class OrderServiceImpl implements OrderService {
+    @Inject
+    private OrderDao orderDao;
+
     @Override
     public Order completeOrder(ShoppingCart shoppingCart) {
         return null;
@@ -16,6 +21,6 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<Order> getOrdersHistory(User user) {
-        return null;
+        return orderDao.getOrdersHistory(user);
     }
 }

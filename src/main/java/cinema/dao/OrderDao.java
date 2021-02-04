@@ -6,7 +6,7 @@ import cinema.model.User;
 import java.util.List;
 
 public interface OrderDao {
-    Order completeOrder(ShoppingCart shoppingCart);
+    Order add(Order Order);
 
     List<Order> getOrdersHistory(User user);
 }
