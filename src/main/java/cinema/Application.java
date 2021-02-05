@@ -11,6 +11,7 @@ import cinema.security.AuthenticationService;
 import cinema.service.CinemaHallService;
 import cinema.service.MovieService;
 import cinema.service.MovieSessionService;
+import cinema.service.OrderService;
 import cinema.service.ShoppingCartService;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -28,11 +29,14 @@ public class Application {
             (AuthenticationService) injector.getInstance(AuthenticationService.class);
     private static final ShoppingCartService shoppingCartService =
             (ShoppingCartService) injector.getInstance(ShoppingCartService.class);
+    private static final OrderService orderService =
+            (OrderService) injector.getInstance(OrderService.class);
 
     public static void main(String[] args) throws RegistrationException, AuthenticationException {
         testMovieCinemaHallSession();
         testUserAndAuthentication();
         testCartService();
+        testOrder();
     }
 
     public static void testMovieCinemaHallSession() {
@@ -79,5 +83,29 @@ public class Application {
         movieSessionService.add(movieSession);
         shoppingCartService.addSession(movieSession, user);
         System.out.println(shoppingCartService.getByUser(user));
+    }
+
+    public static void testOrder() throws RegistrationException {
+        User user = new User();
+        user.setEmail("tustur@gmail.com");
+        user.setPassword("123");
+        user = authenticationService.register(user.getEmail(), user.getPassword());
+        Movie movie = new Movie();
+        movie.setTitle("Windows");
+        movie.setDescription("Windowsss");
+        movieService.add(movie);
+        MovieSession movieSession = new MovieSession();
+        movieSession.setMovie(movie);
+        CinemaHall cinemaHall = new CinemaHall();
+        cinemaHallService.add(cinemaHall);
+        movieSession.setCinemaHall(cinemaHall);
+        movieSession.setShowTime(LocalDateTime.of(2021, 02, 3, 20, 5));
+        movieSessionService.add(movieSession);
+        shoppingCartService.addSession(movieSession, user);
+        shoppingCartService.addSession(movieSession, user);
+        System.out.println(shoppingCartService.getByUser(user));
+        System.out.println(orderService.getOrdersHistory(user));
+        System.out.println(orderService.completeOrder(shoppingCartService.getByUser(user)));
+        System.out.println(orderService.getOrdersHistory(user));
     }
 }
