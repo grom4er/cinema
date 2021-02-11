@@ -6,12 +6,10 @@ import cinema.model.Ticket;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class TicketDaoImpl implements TicketDao {
-    @Autowired
     private final SessionFactory sessionFactory;
 
     public TicketDaoImpl(SessionFactory sessionFactory) {
