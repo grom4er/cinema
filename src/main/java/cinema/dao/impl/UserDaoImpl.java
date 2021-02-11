@@ -2,14 +2,14 @@ package cinema.dao.impl;
 
 import cinema.dao.UserDao;
 import cinema.exception.DataProcessingException;
-import cinema.lib.Dao;
 import cinema.model.User;
 import cinema.util.HibernateUtil;
 import java.util.Optional;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
 
-@Dao
+@Repository
 public class UserDaoImpl implements UserDao {
     @Override
     public User add(User user) {
