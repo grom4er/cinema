@@ -9,8 +9,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class MovieSessionServiceImpl implements MovieSessionService {
+    private final MovieSessionDao movieSessionDao;
 
-    private MovieSessionDao movieSessionDao;
+    public MovieSessionServiceImpl(MovieSessionDao movieSessionDao) {
+        this.movieSessionDao = movieSessionDao;
+    }
 
     @Override
     public List<cinema.model.MovieSession> findAvailableSessions(Long movieId, LocalDate date) {

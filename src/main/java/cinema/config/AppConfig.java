@@ -1,7 +1,5 @@
 package cinema.config;
 
-import cinema.model.CinemaHall;
-import cinema.model.User;
 import java.util.Properties;
 import javax.sql.DataSource;
 import org.apache.commons.dbcp2.BasicDataSource;
@@ -15,8 +13,8 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 @Configuration
 @PropertySource("classpath:db.properties")
 @ComponentScan(basePackages = {
-        "cinema.service.impl",
-        "cinema.dao.impl"
+        "cinema.service",
+        "cinema.dao"
 })
 public class AppConfig {
     private final Environment environment;
