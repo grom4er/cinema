@@ -19,12 +19,13 @@ public class CinemaHallController {
     private final CinemaHallService cinemaHallService;
     private final CinemaHallMapper cinemaHallMapper;
 
-    public CinemaHallController(CinemaHallService cinemaHallService, CinemaHallMapper cinemaHallMapper) {
+    public CinemaHallController(CinemaHallService cinemaHallService,
+                                CinemaHallMapper cinemaHallMapper) {
         this.cinemaHallService = cinemaHallService;
         this.cinemaHallMapper = cinemaHallMapper;
     }
 
-        @PostMapping
+    @PostMapping
     public CinemaHallResponseDto add(@RequestBody CinemaHallRequestDto requestDto) {
         CinemaHall cinemaHall = cinemaHallService.add(cinemaHallMapper.mapToObject(requestDto));
         return cinemaHallMapper.mapToDto(cinemaHall);
