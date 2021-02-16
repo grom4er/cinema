@@ -20,10 +20,10 @@ public class CinemaHallMapper implements RequestDtoMapper<CinemaHallRequestDto, 
     }
 
     @Override
-    public CinemaHallResponseDto mapToDto(CinemaHall cinemaHall) {
+    public CinemaHallResponseDto mapToDto(CinemaHall entity) {
         CinemaHallResponseDto responseDto = new CinemaHallResponseDto();
-        responseDto.setId(cinemaHall.getId());
-        responseDto.setDescription(cinemaHall.getDescription());
+        responseDto.setId(entity.getId());
+        responseDto.setDescription(entity.getDescription());
         return responseDto;
     }
 }

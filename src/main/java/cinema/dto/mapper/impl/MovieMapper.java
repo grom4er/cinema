@@ -20,11 +20,11 @@ public class MovieMapper implements RequestDtoMapper<MovieRequestDto, Movie>,
     }
 
     @Override
-    public MovieResponseDto mapToDto(Movie movie) {
+    public MovieResponseDto mapToDto(Movie entity) {
         MovieResponseDto responseDto = new MovieResponseDto();
-        responseDto.setMovieId(movie.getId());
-        responseDto.setMovieTitle(movie.getTitle());
-        responseDto.setMovieDescription(movie.getDescription());
+        responseDto.setMovieId(entity.getId());
+        responseDto.setMovieTitle(entity.getTitle());
+        responseDto.setMovieDescription(entity.getDescription());
         return responseDto;
     }
 }
