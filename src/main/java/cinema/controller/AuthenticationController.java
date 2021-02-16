@@ -21,10 +21,6 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     public void register(@RequestBody UserRequestDto dto) {
-        try {
-            authenticationService.register(dto.getEmail(), dto.getPwd());
-        } catch (RegistrationException e) {
-            System.err.println("Problem to registration user " + dto);
-        }
+        authenticationService.register(dto.getEmail(), dto.getPwd());
     }
 }
