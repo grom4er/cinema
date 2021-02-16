@@ -1,6 +1,7 @@
 package cinema.dto.mapper.impl;
 
 import cinema.dto.mapper.RequestDtoMapper;
+import cinema.dto.mapper.ResponseDtoMapper;
 import cinema.dto.response.OrderResponseDto;
 import cinema.model.Order;
 import cinema.model.Ticket;
@@ -10,7 +11,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OrderMapper implements RequestDtoMapper<Order, OrderResponseDto> {
+public class OrderMapper implements ResponseDtoMapper<OrderResponseDto, Order> {
     private final OrderService orderService;
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
 
@@ -19,7 +20,7 @@ public class OrderMapper implements RequestDtoMapper<Order, OrderResponseDto> {
     }
 
     @Override
-    public OrderResponseDto mapToObject(Order order) {
+    public OrderResponseDto mapToDto(Order order) {
         OrderResponseDto orderResponseDto = new OrderResponseDto();
         orderResponseDto.setOrderTime(order.getOrderDate().format(formatter));
         orderResponseDto.setId(order.getId());

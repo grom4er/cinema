@@ -5,6 +5,7 @@ import cinema.model.MovieSession;
 import cinema.service.MovieSessionService;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -28,6 +29,11 @@ public class MovieSessionServiceImpl implements MovieSessionService {
     @Override
     public void delete(Long id) {
         movieSessionDao.delete(id);
+    }
+
+    @Override
+    public Optional<MovieSession> getById(Long id) {
+        return movieSessionDao.getById(id);
     }
 
     @Override

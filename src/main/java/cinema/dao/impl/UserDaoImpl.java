@@ -42,7 +42,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public Optional<User> getById(Long id) {
         try (Session session = sessionFactory.openSession()) {
-            return session.createQuery("FROM User WHERE id=:id", User.class)
+            return session.createQuery("FROM User u WHERE u.id=:id", User.class)
                     .setParameter("id", id)
                     .uniqueResultOptional();
         } catch (Exception e) {
