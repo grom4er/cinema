@@ -4,14 +4,14 @@ import cinema.dto.mapper.ResponseDtoMapper;
 import cinema.dto.response.OrderResponseDto;
 import cinema.model.Order;
 import cinema.model.Ticket;
-import cinema.service.OrderService;
 import java.time.format.DateTimeFormatter;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 
 @Component
 public class OrderMapper implements ResponseDtoMapper<OrderResponseDto, Order> {
-    private static final  DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+    private static final  DateTimeFormatter FORMATTER =
+            DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
 
     @Override
     public OrderResponseDto mapToDto(Order entity) {
