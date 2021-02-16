@@ -7,5 +7,9 @@ import java.util.List;
 public interface MovieSessionDao {
     List<MovieSession> findAvailableSessions(Long movieId, LocalDate date);
 
+    MovieSession update(MovieSession movieSession);
+
+    void delete(Long id);
+
     MovieSession add(MovieSession session);
 }
