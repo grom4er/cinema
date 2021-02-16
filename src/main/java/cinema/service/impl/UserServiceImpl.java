@@ -1,9 +1,11 @@
 package cinema.service.impl;
 
 import cinema.dao.UserDao;
+import cinema.exception.DataProcessingException;
 import cinema.model.User;
 import cinema.service.UserService;
 import cinema.util.HashUtil;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,11 @@ public class UserServiceImpl implements UserService {
         user.setPassword(hashedPassword);
         user.setSalt(salt);
         return userDao.add(user);
+    }
+
+    @Override
+    public Optional<User> getById(Long id) {
+        return userDao.getById(id);
     }
 
     @Override
