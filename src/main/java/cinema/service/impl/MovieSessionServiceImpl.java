@@ -19,6 +19,7 @@ public class MovieSessionServiceImpl implements MovieSessionService {
     public List<cinema.model.MovieSession> findAvailableSessions(Long movieId, LocalDate date) {
         return movieSessionDao.findAvailableSessions(movieId, date);
     }
+
     @Override
     public MovieSession update(MovieSession movieSession) {
         return movieSessionDao.update(movieSession);
