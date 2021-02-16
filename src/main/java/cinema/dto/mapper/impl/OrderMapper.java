@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class OrderMapper implements ResponseDtoMapper<OrderResponseDto, Order> {
-    private static final  DateTimeFormatter FORMATTER =
+    private static final DateTimeFormatter FORMATTER =
             DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
 
     @Override
