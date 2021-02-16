@@ -2,7 +2,6 @@ package cinema.controller;
 
 import cinema.dto.mapper.impl.UserMapper;
 import cinema.dto.request.UserRequestDto;
-import cinema.exception.RegistrationException;
 import cinema.security.AuthenticationService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
