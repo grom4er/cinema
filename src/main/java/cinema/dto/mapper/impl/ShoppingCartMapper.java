@@ -1,6 +1,5 @@
 package cinema.dto.mapper.impl;
 
-import cinema.dto.mapper.RequestDtoMapper;
 import cinema.dto.mapper.ResponseDtoMapper;
 import cinema.dto.response.ShoppingCartResponseDto;
 import cinema.model.ShoppingCart;
@@ -9,7 +8,8 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ShoppingCartMapper implements ResponseDtoMapper<ShoppingCartResponseDto, ShoppingCart> {
+public class ShoppingCartMapper implements ResponseDtoMapper<ShoppingCartResponseDto,
+        ShoppingCart> {
     @Override
     public ShoppingCartResponseDto mapToDto(ShoppingCart entity) {
         ShoppingCartResponseDto dto = new ShoppingCartResponseDto();

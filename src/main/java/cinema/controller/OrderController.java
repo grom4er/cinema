@@ -22,7 +22,9 @@ public class OrderController {
     private final UserService userService;
     private final OrderMapper orderMapper;
 
-    public OrderController(OrderService orderService, ShoppingCartService shoppingCartService, UserService userService, OrderMapper orderMapper) {
+    public OrderController(OrderService orderService,
+                           ShoppingCartService shoppingCartService,
+                           UserService userService, OrderMapper orderMapper) {
         this.orderService = orderService;
         this.shoppingCartService = shoppingCartService;
         this.userService = userService;

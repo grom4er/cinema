@@ -22,11 +22,13 @@ public class ShoppingCartController {
     private final ShoppingCartMapper shoppingCartMapper;
     private final MovieSessionService movieService;
 
-    public ShoppingCartController(ShoppingCartService shoppingCartService, UserService userService, ShoppingCartMapper shoppingCartMapper, MovieSessionService movieService) {
+    public ShoppingCartController(ShoppingCartService shoppingCartService,
+                                  UserService userService,
+                                  ShoppingCartMapper shoppingCartMapper,
+                                  MovieSessionService movieService) {
         this.shoppingCartService = shoppingCartService;
         this.userService = userService;
         this.shoppingCartMapper = shoppingCartMapper;
-
         this.movieService = movieService;
     }
 
@@ -40,7 +42,8 @@ public class ShoppingCartController {
     public ShoppingCartResponseDto add(@RequestParam Long userId,
                                        @RequestParam Long moviesSessionId) {
         ShoppingCartResponseDto dto = new ShoppingCartResponseDto();
-        ShoppingCart shoppingCart = shoppingCartService.addSession(movieService.getById(moviesSessionId).get(),
+        ShoppingCart shoppingCart = shoppingCartService
+                .addSession(movieService.getById(moviesSessionId).get(),
                 userService.getById(userId).get());
         dto.setUserEmail(shoppingCart.getUser().getEmail());
         dto.setId(shoppingCart.getId());

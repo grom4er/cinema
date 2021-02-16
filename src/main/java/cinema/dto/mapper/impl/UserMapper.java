@@ -9,7 +9,8 @@ import cinema.service.UserService;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserMapper implements RequestDtoMapper<UserRequestDto, User>, ResponseDtoMapper<UserResponseDto, User> {
+public class UserMapper implements RequestDtoMapper<UserRequestDto, User>,
+        ResponseDtoMapper<UserResponseDto, User> {
 
     private final UserService userService;
 

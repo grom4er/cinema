@@ -3,7 +3,6 @@ package cinema.dao.impl;
 import cinema.dao.MovieSessionDao;
 import cinema.exception.DataProcessingException;
 import cinema.model.MovieSession;
-import cinema.model.User;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -96,7 +95,6 @@ public class MovieSessionDaoImpl implements MovieSessionDao {
             throw new DataProcessingException("Can't find Movie Session by id " + id + ".", e);
         }
     }
-
 
     @Override
     public MovieSession add(MovieSession session) {
