@@ -47,7 +47,7 @@ public class ShoppingCartController {
                 userService.getById(userId).get());
         dto.setUserEmail(shoppingCart.getUser().getEmail());
         dto.setId(shoppingCart.getId());
-        dto.setTicketsId(shoppingCart.getTickets()
+        dto.setTicketIds(shoppingCart.getTickets()
                 .stream()
                 .map(Ticket::getId)
                 .collect(Collectors.toList()));

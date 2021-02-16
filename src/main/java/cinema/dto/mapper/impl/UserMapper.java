@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserMapper implements RequestDtoMapper<UserRequestDto, User>,
         ResponseDtoMapper<UserResponseDto, User> {
-
     private final UserService userService;
 
     public UserMapper(UserService userService) {
