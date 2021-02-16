@@ -11,23 +11,18 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class OrderMapper implements ResponseDtoMapper<OrderResponseDto, Order> {
-    private final OrderService orderService;
-    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
-
-    public OrderMapper(OrderService orderService) {
-        this.orderService = orderService;
-    }
+    private static final  DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
 
     @Override
-    public OrderResponseDto mapToDto(Order order) {
+    public OrderResponseDto mapToDto(Order entity) {
         OrderResponseDto orderResponseDto = new OrderResponseDto();
-        orderResponseDto.setOrderTime(order.getOrderDate().format(formatter));
-        orderResponseDto.setId(order.getId());
-        orderResponseDto.setTicketIds(order.getTickets()
+        orderResponseDto.setOrderTime(entity.getOrderDate().format(FORMATTER));
+        orderResponseDto.setId(entity.getId());
+        orderResponseDto.setTicketIds(entity.getTickets()
                 .stream()
                 .map(Ticket::getId)
                 .collect(Collectors.toList()));
-        orderResponseDto.setUserEmail(order.getUser().getEmail());
+        orderResponseDto.setUserEmail(entity.getUser().getEmail());
         return orderResponseDto;
     }
 }

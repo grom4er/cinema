@@ -2,7 +2,7 @@ package cinema.dto.request;
 
 public class UserRequestDto {
     private String email;
-    private String pwd;
+    private String password;
 
     public String getEmail() {
         return email;
@@ -12,11 +12,11 @@ public class UserRequestDto {
         this.email = email;
     }
 
-    public String getPwd() {
-        return pwd;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

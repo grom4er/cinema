@@ -5,23 +5,16 @@ import cinema.dto.mapper.ResponseDtoMapper;
 import cinema.dto.request.UserRequestDto;
 import cinema.dto.response.UserResponseDto;
 import cinema.model.User;
-import cinema.service.UserService;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UserMapper implements RequestDtoMapper<UserRequestDto, User>,
         ResponseDtoMapper<UserResponseDto, User> {
-    private final UserService userService;
-
-    public UserMapper(UserService userService) {
-        this.userService = userService;
-    }
-
     @Override
-    public User mapToObject(UserRequestDto entity) {
+    public User mapToObject(UserRequestDto requestDto) {
         User user = new User();
-        user.setPassword(entity.getPwd());
-        user.setEmail(entity.getEmail());
+        user.setPassword(requestDto.getPassword());
+        user.setEmail(requestDto.getEmail());
         return user;
     }
 

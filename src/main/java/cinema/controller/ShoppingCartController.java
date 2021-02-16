@@ -33,24 +33,15 @@ public class ShoppingCartController {
     }
 
     @GetMapping("/by-user")
-    public ShoppingCartResponseDto get(@RequestParam Long userId) {
-        ShoppingCart byUser = shoppingCartService.getByUser(userService.getById(userId).get());
+    public ShoppingCartResponseDto getByUserId(@RequestParam Long userId) {
+        ShoppingCart byUser = shoppingCartService.getByUser(userService.getById(userId));
         return shoppingCartMapper.mapToDto(byUser);
     }
 
     @PostMapping("/movie-sessions")
-    public ShoppingCartResponseDto add(@RequestParam Long userId,
+    public void addSession(@RequestParam Long userId,
                                        @RequestParam Long moviesSessionId) {
-        ShoppingCartResponseDto dto = new ShoppingCartResponseDto();
-        ShoppingCart shoppingCart = shoppingCartService
-                .addSession(movieService.getById(moviesSessionId).get(),
-                userService.getById(userId).get());
-        dto.setUserEmail(shoppingCart.getUser().getEmail());
-        dto.setId(shoppingCart.getId());
-        dto.setTicketIds(shoppingCart.getTickets()
-                .stream()
-                .map(Ticket::getId)
-                .collect(Collectors.toList()));
-        return dto;
+        shoppingCartService.addSession(movieService.getById(moviesSessionId),
+                userService.getById(userId));
     }
 }

@@ -12,10 +12,10 @@ public class MovieMapper implements RequestDtoMapper<MovieRequestDto, Movie>,
         ResponseDtoMapper<MovieResponseDto, Movie> {
 
     @Override
-    public Movie mapToObject(MovieRequestDto dto) {
+    public Movie mapToObject(MovieRequestDto requestDto) {
         Movie movie = new Movie();
-        movie.setTitle(dto.getMovieTitle());
-        movie.setDescription(dto.getMovieDescription());
+        movie.setTitle(requestDto.getMovieTitle());
+        movie.setDescription(requestDto.getMovieDescription());
         return movie;
     }
 
