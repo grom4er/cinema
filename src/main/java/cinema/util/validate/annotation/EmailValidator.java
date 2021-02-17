@@ -1,4 +1,4 @@
-package cinema.util.validate.email;
+package cinema.util.validate.annotation;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -9,11 +9,13 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Documented
-@Constraint(validatedBy = Validator.class)
-@Target( { ElementType.METHOD, ElementType.FIELD })
+@Constraint(validatedBy = cinema.util.validate.impl.EmailValidator.class)
+@Target({ElementType.METHOD, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface EmailValidator {
     String message() default "Incorrect email!";
+
     Class<?>[] groups() default {};
+
     Class<? extends Payload>[] payload() default {};
 }

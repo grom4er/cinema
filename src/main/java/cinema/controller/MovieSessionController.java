@@ -1,5 +1,6 @@
 package cinema.controller;
 
+import javax.validation.Valid;
 import cinema.dto.mapper.impl.MovieSessionMapper;
 import cinema.dto.request.MovieSessionRequestDto;
 import cinema.dto.response.MovieSessionResponseDto;
@@ -33,7 +34,7 @@ public class MovieSessionController {
     }
 
     @PostMapping
-    public MovieSessionResponseDto add(@RequestBody MovieSessionRequestDto requestDto) {
+    public MovieSessionResponseDto add(@RequestBody @Valid MovieSessionRequestDto requestDto) {
         MovieSession movieSession = movieSessionMapper.mapToObject(requestDto);
         movieSessionService.add(movieSession);
         return movieSessionMapper.mapToDto(movieSession);
@@ -52,7 +53,7 @@ public class MovieSessionController {
 
     @PutMapping("/{id}")
     public MovieSessionResponseDto update(@PathVariable Long id,
-                                          @RequestBody MovieSessionRequestDto requestDto) {
+                                          @RequestBody @Valid MovieSessionRequestDto requestDto) {
         MovieSession movieSession = movieSessionMapper.mapToObject(requestDto);
         movieSession.setId(id);
         movieSessionService.update(movieSession);

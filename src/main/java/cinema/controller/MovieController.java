@@ -1,5 +1,6 @@
 package cinema.controller;
 
+import javax.validation.Valid;
 import cinema.dto.mapper.impl.MovieMapper;
 import cinema.dto.request.MovieRequestDto;
 import cinema.dto.response.MovieResponseDto;
@@ -25,7 +26,7 @@ public class MovieController {
     }
 
     @PostMapping
-    public MovieResponseDto add(@RequestBody MovieRequestDto requestDto) {
+    public MovieResponseDto add(@RequestBody @Valid MovieRequestDto requestDto) {
         Movie movie = movieService.add(movieMapper.mapToObject(requestDto));
         return movieMapper.mapToDto(movie);
     }
