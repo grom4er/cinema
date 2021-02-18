@@ -6,6 +6,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import javax.validation.Constraint;
+import javax.validation.Payload;
 
 @Constraint(validatedBy = ValidatePasswords.class)
 @Target({ElementType.TYPE})
@@ -17,6 +18,10 @@ public @interface ValidatePassword {
     String field();
 
     String fieldMatch();
+
+    Class<?>[] groups() default {};
+
+    Class<? extends Payload>[] payload() default {};
 
     @Target({ElementType.TYPE})
     @Retention(RetentionPolicy.RUNTIME)
