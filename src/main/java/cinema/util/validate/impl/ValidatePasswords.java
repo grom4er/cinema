@@ -20,8 +20,7 @@ public class ValidatePasswords
         Object fieldMatchValue = new BeanWrapperImpl(user).getPropertyValue(repeatPassword);
         if (fieldValue != null) {
             return fieldValue.equals(fieldMatchValue);
-        } else {
-            return fieldMatchValue == null;
         }
+        return fieldMatchValue == null;
     }
 }
