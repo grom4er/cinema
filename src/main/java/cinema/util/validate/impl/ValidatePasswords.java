@@ -18,9 +18,6 @@ public class ValidatePasswords
     public boolean isValid(Object user, ConstraintValidatorContext context) {
         Object fieldValue = new BeanWrapperImpl(user).getPropertyValue(password);
         Object fieldMatchValue = new BeanWrapperImpl(user).getPropertyValue(repeatPassword);
-        if (fieldValue != null) {
-            return fieldValue.equals(fieldMatchValue);
-        }
-        return fieldMatchValue == null;
+        return password != null && password.equals(repeatPassword);
     }
 }
