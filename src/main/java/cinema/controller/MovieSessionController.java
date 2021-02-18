@@ -1,6 +1,5 @@
 package cinema.controller;
 
-import javax.validation.Valid;
 import cinema.dto.mapper.impl.MovieSessionMapper;
 import cinema.dto.request.MovieSessionRequestDto;
 import cinema.dto.response.MovieSessionResponseDto;
@@ -9,6 +8,7 @@ import cinema.service.MovieSessionService;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.validation.Valid;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;

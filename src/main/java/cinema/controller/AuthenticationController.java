@@ -1,8 +1,8 @@
 package cinema.controller;
 
-import javax.validation.Valid;
 import cinema.dto.request.UserRequestDto;
 import cinema.security.AuthenticationService;
+import javax.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;

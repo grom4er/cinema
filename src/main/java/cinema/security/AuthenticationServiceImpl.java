@@ -15,6 +15,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         this.shoppingCartService = shoppingCartService;
         this.userService = userService;
     }
+
     @Override
     public User register(String email, String password) {
         User user = new User();

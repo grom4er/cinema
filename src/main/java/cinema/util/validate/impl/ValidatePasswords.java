@@ -1,8 +1,8 @@
 package cinema.util.validate.impl;
 
+import cinema.util.validate.annotation.ValidatePassword;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-import cinema.util.validate.annotation.ValidatePassword;
 import org.springframework.beans.BeanWrapperImpl;
 
 public class ValidatePasswords
