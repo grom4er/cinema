@@ -1,12 +1,8 @@
 package cinema.security;
 
-import static cinema.util.HashUtil.hashPassword;
-
-import cinema.exception.AuthenticationException;
 import cinema.model.User;
 import cinema.service.ShoppingCartService;
 import cinema.service.UserService;
-import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,16 +14,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                                      UserService userService) {
         this.shoppingCartService = shoppingCartService;
         this.userService = userService;
-    }
-
-    @Override
-    public User login(String email, String password) throws AuthenticationException {
-        Optional<User> findUser = userService.findByEmail(email);
-        if (findUser.isEmpty() || !hashPassword(password, findUser.get().getSalt())
-                .equals(findUser.get().getPassword())) {
-            throw new AuthenticationException("email or password wrong");
-        }
-        return findUser.get();
     }
 
     @Override

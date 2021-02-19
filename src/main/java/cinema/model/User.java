@@ -1,6 +1,5 @@
 package cinema.model;
 
-import java.util.Arrays;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,7 +16,6 @@ public class User {
     private String password;
     @Column(unique = true)
     private String email;
-    private byte[] salt;
 
     public Long getId() {
         return id;
@@ -39,14 +37,6 @@ public class User {
         return email;
     }
 
-    public byte[] getSalt() {
-        return salt;
-    }
-
-    public void setSalt(byte[] salt) {
-        this.salt = salt;
-    }
-
     public void setEmail(String email) {
         this.email = email;
     }
@@ -55,7 +45,6 @@ public class User {
     public String toString() {
         return "User{"
                 + "id=" + id
-                + ", email='" + email + '\''
-                + ", salt=" + Arrays.toString(salt) + '}';
+                + ", email='" + email + '\'' + '}';
     }
 }
