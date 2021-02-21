@@ -1,7 +1,7 @@
 package cinema.dto.request;
 
 import javax.validation.constraints.NotNull;
-import cinema.model.UserRole;
+import cinema.model.Role;
 import cinema.util.validate.annotation.EmailValidator;
 import cinema.util.validate.annotation.ValidatePassword;
 import java.util.List;
@@ -19,7 +19,7 @@ public class UserRequestDto {
     private String password;
     private String repeatPassword;
     @NotNull
-    private List<UserRole> roleList;
+    private List<Role> roleList;
 
     public String getEmail() {
         return email;
@@ -45,11 +45,11 @@ public class UserRequestDto {
         this.repeatPassword = repeatPassword;
     }
 
-    public List<UserRole> getRoleList() {
+    public List<Role> getRoleList() {
         return roleList;
     }
 
-    public void setRoleList(List<UserRole> roleList) {
+    public void setRoleList(List<Role> roleList) {
         this.roleList = roleList;
     }
 }

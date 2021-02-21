@@ -1,10 +1,11 @@
 package cinema.dao;
 
-import javax.management.relation.Role;
+
+import cinema.model.Role;
 import java.util.Optional;
 
 public interface RoleDao {
-    void add(Role role);
+    Role add(Role role);
 
     Optional<Role> getRoleByName(String roleName);
 }

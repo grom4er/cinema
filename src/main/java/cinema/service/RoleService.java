@@ -1,9 +1,10 @@
 package cinema.service;
 
-import javax.management.relation.Role;
+
+import cinema.model.Role;
 
 public interface RoleService {
-    void add(Role role);
+    Role add(Role role);
 
     Role getRoleByName(String roleName);
 

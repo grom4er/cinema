@@ -1,5 +1,6 @@
 package cinema.config;
 
+import cinema.service.impl.CustomUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
@@ -12,22 +13,25 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @EnableWebSecurity
 public class SecureConfig extends WebSecurityConfigurerAdapter {
+    private final CustomUserDetailService userDetailService;
+
+    public SecureConfig(CustomUserDetailService userDetailService) {
+        this.userDetailService = userDetailService;
+    }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder managerBuilder) throws Exception {
-        managerBuilder.inMemoryAuthentication()
-                .passwordEncoder(getEncoder())
-                .withUser("user")
-                .password(getEncoder().encode("123")).roles("USER");
+        managerBuilder.userDetailsService(userDetailService)
+                .passwordEncoder(getEncoder());
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http .authorizeRequests()
+        http.authorizeRequests()
                 .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST,"/movies/**").hasRole("ADMIN")
-                .antMatchers(HttpMethod.GET,"/movies/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/movies/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, "/movies/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

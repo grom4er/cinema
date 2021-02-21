@@ -1,9 +1,8 @@
 package cinema.dao.impl;
 
-import javax.management.relation.Role;
 import cinema.dao.RoleDao;
 import cinema.exception.DataProcessingException;
-import cinema.model.ShoppingCart;
+import cinema.model.Role;
 import java.util.Optional;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -19,7 +18,7 @@ public class RoleDaoImpl implements RoleDao {
     }
 
     @Override
-    public void add(Role role) {
+    public Role add(Role role) {
         Transaction transaction = null;
         Session session = null;
         try {
@@ -27,6 +26,7 @@ public class RoleDaoImpl implements RoleDao {
             transaction = session.beginTransaction();
             session.save(role);
             transaction.commit();
+            return role;
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
@@ -43,8 +43,8 @@ public class RoleDaoImpl implements RoleDao {
     @Override
     public Optional<Role> getRoleByName(String roleName) {
         try (Session session = sessionFactory.openSession()) {
-            return session.createQuery("FROM Role r WHERE r.roleName = :roleName", Role.class)
-                    .setParameter("roleName", roleName)
+            return session.createQuery("FROM Roles r WHERE r.roleName = :roleName", Role.class)
+                    .setParameter("roleName", Role.Roles.valueOf(roleName))
                     .uniqueResultOptional();
         } catch (Exception e) {
             throw new DataProcessingException("Can't take role: "

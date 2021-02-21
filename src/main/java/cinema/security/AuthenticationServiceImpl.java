@@ -1,7 +1,7 @@
 package cinema.security;
 
 import cinema.model.User;
-import cinema.model.UserRole;
+import cinema.model.Role;
 import cinema.service.ShoppingCartService;
 import cinema.service.UserService;
 import java.util.List;
@@ -19,7 +19,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     }
 
     @Override
-    public User register(String email, String password, List<UserRole> roleList) {
+    public User register(String email, String password, List<Role> roleList) {
         User user = new User();
         user.setEmail(email);
         user.setPassword(password);

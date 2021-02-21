@@ -19,7 +19,7 @@ public class User {
     @Column(unique = true)
     private String email;
     @ManyToMany
-    private List<UserRole> userRole;
+    private List<Role> role;
 
     public Long getId() {
         return id;
@@ -45,12 +45,12 @@ public class User {
         this.email = email;
     }
 
-    public List<UserRole> getUserRole() {
-        return userRole;
+    public List<Role> getUserRole() {
+        return role;
     }
 
-    public void setUserRole(List<UserRole> userRole) {
-        this.userRole = userRole;
+    public void setUserRole(List<Role> role) {
+        this.role = role;
     }
 
     @Override
