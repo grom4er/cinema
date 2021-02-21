@@ -16,7 +16,7 @@ public class UserDetailsFactory {
 
     private List<GrantedAuthority> mapToGrantedAuthority(List<Role> roleList) {
         return roleList.stream()
-                .map(x -> new SimpleGrantedAuthority(x.getRoles().name()))
+                .map(x -> new SimpleGrantedAuthority(x.getRole()))
                 .collect(Collectors.toList());
     }
 }

@@ -44,7 +44,7 @@ public class RoleDaoImpl implements RoleDao {
     public Optional<Role> getRoleByName(String roleName) {
         try (Session session = sessionFactory.openSession()) {
             return session.createQuery("FROM Roles r WHERE r.roleName = :roleName", Role.class)
-                    .setParameter("roleName", Role.Roles.valueOf(roleName))
+                    .setParameter("roleName", roleName)
                     .uniqueResultOptional();
         } catch (Exception e) {
             throw new DataProcessingException("Can't take role: "

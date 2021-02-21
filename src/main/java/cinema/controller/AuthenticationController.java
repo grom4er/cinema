@@ -1,12 +1,9 @@
 package cinema.controller;
 
 import cinema.dto.request.UserRequestDto;
-import cinema.model.Role;
 import cinema.security.AuthenticationService;
 import javax.validation.Valid;
 import cinema.service.RoleService;
-import java.util.ArrayList;
-import java.util.List;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,10 +21,6 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     public void register(@RequestBody @Valid UserRequestDto dto) {
-        List<Role> roleList = new ArrayList<>();
-        Role role = new Role();
-        role.setRoles(Role.Roles.User);
-        roleList.add(roleService.add(role));
-        authenticationService.register(dto.getEmail(), dto.getPassword(), roleList);
+        authenticationService.register(dto.getEmail(), dto.getPassword());
     }
 }

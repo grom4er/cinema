@@ -14,8 +14,10 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Enumerated(value = EnumType.STRING)
-    private Roles roles;
+    private String name;
+
+    public Role() {
+    }
 
     public Long getId() {
         return id;
@@ -25,17 +27,11 @@ public class Role {
         this.id = id;
     }
 
-    public Roles getRoles() {
-        return roles;
+    public String getRole() {
+        return name;
     }
 
-    public void setRoles(Roles roles) {
-        this.roles = roles;
+    public void setRole(String name) {
+        this.name = name.toUpperCase();
     }
-
-    public enum Roles {
-        User, Admin;
-    }
-
-
 }
