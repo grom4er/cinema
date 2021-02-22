@@ -42,7 +42,7 @@ public class OrderController {
     }
 
     @GetMapping
-    public List<OrderResponseDto> getByUserId(Authentication authentication) {
+    public List<OrderResponseDto> getOrderHistory(Authentication authentication) {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         String email = userDetails.getUsername();
         List<Order> orders = orderService.getOrdersHistory(userService.findByEmail(email).get());
