@@ -31,13 +31,15 @@ public class SecureConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/register").permitAll()
-                .antMatchers(HttpMethod.GET, "/cinema-halls","movie-sessions/*").hasAnyRole("USER", "ADMIN")
+                .antMatchers(HttpMethod.GET, "/cinema-halls","movie-sessions/*")
+                .hasAnyRole("USER", "ADMIN")
                 .antMatchers(HttpMethod.POST,
                         "/shopping-carts/movie-sessions", "/orders/complete").hasRole("USER")
                 .antMatchers(HttpMethod.POST, "/cinema-halls/*",
                         "/movies", "/movie-sessions", "").hasRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE).hasRole("ADMIN")
-                .antMatchers(HttpMethod.GET,"/movies","/orders","/shopping-carts/by-user").hasRole("USER")
+                .antMatchers(HttpMethod.GET,"/movies","/orders","/shopping-carts/by-user")
+                .hasRole("USER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().permitAll()
