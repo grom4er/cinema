@@ -4,8 +4,8 @@ import cinema.model.Role;
 import cinema.model.User;
 import cinema.service.RoleService;
 import cinema.service.UserService;
-import javax.annotation.PostConstruct;
 import java.util.Set;
+import javax.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
 
 @Component

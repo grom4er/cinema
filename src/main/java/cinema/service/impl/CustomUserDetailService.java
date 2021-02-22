@@ -3,7 +3,6 @@ package cinema.service.impl;
 import cinema.model.User;
 import cinema.security.UserDetailsFactory;
 import cinema.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

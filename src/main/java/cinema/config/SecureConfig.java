@@ -31,7 +31,8 @@ public class SecureConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.PUT, "/movie-sessions/**").access("hasAuthority('ADMIN')")
-                .antMatchers(HttpMethod.DELETE, "/movie-sessions/**").access("hasAuthority('ADMIN')")
+                .antMatchers(HttpMethod.DELETE, "/movie-sessions/**")
+                .access("hasAuthority('ADMIN')")
                 .antMatchers("/users/**").access("hasAuthority('ADMIN')")
                 .antMatchers(HttpMethod.POST,
                         "/movies/**",
