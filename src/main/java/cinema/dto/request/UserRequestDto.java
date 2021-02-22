@@ -39,5 +39,4 @@ public class UserRequestDto {
     public void setRepeatPassword(String repeatPassword) {
         this.repeatPassword = repeatPassword;
     }
-
 }

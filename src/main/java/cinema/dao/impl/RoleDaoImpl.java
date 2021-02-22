@@ -43,7 +43,7 @@ public class RoleDaoImpl implements RoleDao {
     @Override
     public Optional<Role> getRoleByName(String roleName) {
         try (Session session = sessionFactory.openSession()) {
-            return session.createQuery("FROM Roles r WHERE r.roleName = :roleName", Role.class)
+            return session.createQuery("FROM Roles  WHERE roleName = :roleName", Role.class)
                     .setParameter("roleName", roleName)
                     .uniqueResultOptional();
         } catch (Exception e) {

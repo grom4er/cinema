@@ -1,10 +1,9 @@
 package cinema.security;
 
-import cinema.model.Role;
 import cinema.model.User;
+import cinema.service.RoleService;
 import cinema.service.ShoppingCartService;
 import cinema.service.UserService;
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
@@ -12,11 +11,13 @@ import org.springframework.stereotype.Service;
 public class AuthenticationServiceImpl implements AuthenticationService {
     private final UserService userService;
     private final ShoppingCartService shoppingCartService;
+    private final RoleService roleService;
 
     public AuthenticationServiceImpl(ShoppingCartService shoppingCartService,
-                                     UserService userService) {
+                                     UserService userService, RoleService roleService) {
         this.shoppingCartService = shoppingCartService;
         this.userService = userService;
+        this.roleService = roleService;
     }
 
     @Override
@@ -24,11 +25,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         User user = new User();
         user.setEmail(email);
         user.setPassword(password);
-        Role role = new Role();
-        role.setRole("user");
-        List<Role> roleList = new ArrayList<>();
-        roleList.add(role);
-        user.setUserRole(roleList);
+        user.setUserRole(List.of(roleService.getRoleByName("USER")));
         userService.add(user);
         shoppingCartService.registerNewShoppingCart(user);
         return user;

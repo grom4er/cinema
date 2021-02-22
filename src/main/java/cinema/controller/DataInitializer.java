@@ -5,20 +5,20 @@ import cinema.model.User;
 import cinema.service.RoleService;
 import cinema.service.UserService;
 import java.util.List;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Component;
+import javax.annotation.PostConstruct;
 
-@RestController
-public class InjectController {
+@Component
+public class DataInitializer {
     private final RoleService roleService;
     private final UserService userService;
 
-    public InjectController(RoleService roleService, UserService userService) {
+    public DataInitializer(RoleService roleService, UserService userService) {
         this.roleService = roleService;
         this.userService = userService;
     }
 
-    @GetMapping("/inject")
+    @PostConstruct
     public String inject() {
         Role adminRole = new Role();
         Role userRole = new Role();
