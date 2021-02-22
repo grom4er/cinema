@@ -4,8 +4,8 @@ import cinema.model.Role;
 import cinema.model.User;
 import cinema.service.RoleService;
 import cinema.service.UserService;
-import java.util.List;
 import javax.annotation.PostConstruct;
+import java.util.Set;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -22,14 +22,14 @@ public class DataInitializer {
     public String inject() {
         Role adminRole = new Role();
         Role userRole = new Role();
-        userRole.setRole("user");
-        adminRole.setRole("admin");
+        userRole.setRole(Role.RoleType.USER);
+        adminRole.setRole(Role.RoleType.ADMIN);
         roleService.add(adminRole);
         roleService.add(userRole);
         User userAdmin = new User();
         userAdmin.setEmail("admin@gmail.com");
         userAdmin.setPassword("12345");
-        userAdmin.setUserRole(List.of(adminRole));
+        userAdmin.setUserRole(Set.of(adminRole));
         userService.add(userAdmin);
         return "inject complete";
     }

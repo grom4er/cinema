@@ -30,16 +30,20 @@ public class SecureConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/register").permitAll()
-                .antMatchers(HttpMethod.GET, "/cinema-halls","movie-sessions/*")
-                .hasAnyRole("USER", "ADMIN")
+                .antMatchers(HttpMethod.PUT, "/movie-sessions/**").access("hasAuthority('ADMIN')")
+                .antMatchers(HttpMethod.DELETE, "/movie-sessions/**").access("hasAuthority('ADMIN')")
+                .antMatchers("/users/**").access("hasAuthority('ADMIN')")
                 .antMatchers(HttpMethod.POST,
-                        "/shopping-carts/movie-sessions", "/orders/complete").hasRole("USER")
-                .antMatchers(HttpMethod.POST, "/cinema-halls/*",
-                        "/movies", "/movie-sessions", "").hasRole("ADMIN")
-                .antMatchers(HttpMethod.DELETE).hasRole("ADMIN")
-                .antMatchers(HttpMethod.GET,"/movies","/orders","/shopping-carts/by-user")
-                .hasRole("USER")
+                        "/movies/**",
+                        "/movie-sessions/**",
+                        "/cinema-halls/**").access("hasAuthority('ADMIN')")
+                .antMatchers("/orders/**",
+                        "/shopping-carts/**").access("hasAuthority('USER')")
+                .antMatchers(HttpMethod.GET,
+                        "/movies/**",
+                        "/movie-sessions/**",
+                        "/cinema-halls/**").permitAll()
+                .antMatchers("/register/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().permitAll()

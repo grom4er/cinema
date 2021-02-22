@@ -1,6 +1,6 @@
 package cinema.model;
 
-import java.util.List;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +19,7 @@ public class User {
     @Column(unique = true)
     private String email;
     @ManyToMany
-    private List<Role> roles;
+    private Set<Role> roles;
 
     public Long getId() {
         return id;
@@ -45,11 +45,11 @@ public class User {
         this.email = email;
     }
 
-    public List<Role> getUserRole() {
+    public Set<Role> getUserRole() {
         return roles;
     }
 
-    public void setUserRole(List<Role> role) {
+    public void setUserRole(Set<Role> role) {
         this.roles = role;
     }
 

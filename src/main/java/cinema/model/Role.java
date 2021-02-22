@@ -1,6 +1,8 @@
 package cinema.model;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,7 +14,8 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    @Enumerated(value = EnumType.STRING)
+    private RoleType role;
 
     public Role() {
     }
@@ -25,11 +28,24 @@ public class Role {
         this.id = id;
     }
 
-    public String getRole() {
-        return name;
+    public RoleType getRole() {
+        return role;
     }
 
-    public void setRole(String name) {
-        this.name = name.toUpperCase();
+    public void setRole(RoleType role) {
+        this.role = role;
+    }
+
+    public enum RoleType {
+        ADMIN("ADMIN"), USER("USER");
+        private String name;
+
+        RoleType(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
     }
 }
