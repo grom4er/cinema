@@ -1,6 +1,5 @@
 package cinema.dao;
 
-
 import cinema.model.Role;
 import java.util.Optional;
 

@@ -33,7 +33,8 @@ public class SecureConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/register","/inject").permitAll()
                 .antMatchers("/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET, "/**").hasRole("USER")
-                .antMatchers(HttpMethod.POST, "/shopping-carts//movie-sessions","/orders/complete").hasRole("USER")
+                .antMatchers(HttpMethod.POST,
+                        "/shopping-carts//movie-sessions","/orders/complete").hasRole("USER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

@@ -42,8 +42,8 @@ public class UserDaoImpl implements UserDao {
     @Override
     public Optional<User> getById(Long id) {
         try (Session session = sessionFactory.openSession()) {
-            return session.createQuery("from User" +
-                    "JOIN FETCH roles where WHERE u.id=:id", User.class)
+            return session.createQuery("from User"
+                    + "JOIN FETCH roles where WHERE u.id=:id", User.class)
                     .setParameter("id", id)
                     .uniqueResultOptional();
         } catch (Exception e) {
@@ -54,8 +54,8 @@ public class UserDaoImpl implements UserDao {
     @Override
     public Optional<User> findByEmail(String email) {
         try (Session session = sessionFactory.openSession()) {
-            return session.createQuery("from User u " +
-                    "JOIN FETCH u.roles where email=:email", User.class)
+            return session.createQuery("from User u "
+                    + "JOIN FETCH u.roles where email=:email", User.class)
                     .setParameter("email", email)
                     .uniqueResultOptional();
         } catch (Exception e) {

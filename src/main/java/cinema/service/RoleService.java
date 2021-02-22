@@ -1,6 +1,5 @@
 package cinema.service;
 
-
 import cinema.model.Role;
 
 public interface RoleService {

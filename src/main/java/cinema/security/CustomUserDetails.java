@@ -11,7 +11,8 @@ public class CustomUserDetails implements UserDetails {
     private final String password;
     private final List<GrantedAuthority> roleList;
 
-    public CustomUserDetails(Long id, String email, String password, List<GrantedAuthority> roleList) {
+    public CustomUserDetails(Long id, String email, String password,
+                             List<GrantedAuthority> roleList) {
         this.id = id;
         this.email = email;
         this.password = password;

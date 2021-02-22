@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-
 public class UserDetailsFactory {
     public CustomUserDetails create(User user) {
         return new CustomUserDetails(user.getId(), user.getEmail(),
