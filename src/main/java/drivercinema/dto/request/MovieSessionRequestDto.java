@@ -7,7 +7,7 @@ public class MovieSessionRequestDto {
     @Positive
     private Long movieId;
     @Positive
-    private Long cinemaHallId;
+    private Long locationId;
     @NotNull
     private String showTime;
 
@@ -16,7 +16,7 @@ public class MovieSessionRequestDto {
     }
 
     public Long getLocationId() {
-        return cinemaHallId;
+        return locationId;
     }
 
     public String getShowTime() {

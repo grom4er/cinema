@@ -55,11 +55,11 @@ public class LocationDaoImpl implements LocationDao {
     @Override
     public List<Location> getAll() {
         try (Session session = sessionFactory.openSession()) {
-            Query<Location> getAllCinemaHall
+            Query<Location> getAllLocation
                     = session.createQuery("FROM Location", Location.class);
-            return getAllCinemaHall.getResultList();
+            return getAllLocation.getResultList();
         } catch (Exception e) {
-            throw new DataProcessingException("Can't get a list of locations entities", e);
+            throw new DataProcessingException("Can't get a list of location entities", e);
         }
     }
 }

@@ -22,7 +22,7 @@ public class OrderMapper implements ResponseDtoMapper<OrderResponseDto, Order> {
                 .stream()
                 .map(Ticket::getId)
                 .collect(Collectors.toList()));
-        orderResponseDto.serDriverPhoneNumber(entity.getUser().getPhoneNumber());
+        orderResponseDto.setDriverPhoneNumber(entity.getUser().getPhoneNumber());
         return orderResponseDto;
     }
 }

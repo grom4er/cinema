@@ -26,7 +26,7 @@ public class MovieSessionDaoImpl implements MovieSessionDao {
         try (Session session = sessionFactory.openSession()) {
             Query<MovieSession> getallmoviesquery = session.createQuery("FROM MovieSession AS ms "
                     + "left join fetch ms.movie "
-                    + "left join fetch ms.location "
+                    + "left join fetch ms.locations "
                     + "where ms.movie.id =:movie_id "
                     + "and date_format(ms.showTime, '%Y-%m-%d')=:date", MovieSession.class);
             getallmoviesquery.setParameter("movie_id", movieId);

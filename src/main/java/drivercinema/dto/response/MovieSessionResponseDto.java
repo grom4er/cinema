@@ -4,7 +4,7 @@ public class MovieSessionResponseDto {
     private Long movieSessionId;
     private Long movieId;
     private String movieTitle;
-    private Long cinemaHallId;
+    private Long locationId;
     private String showTime;
 
     public Long getMovieSessionId() {
@@ -31,12 +31,12 @@ public class MovieSessionResponseDto {
         this.movieTitle = movieTitle;
     }
 
-    public Long getCinemaHallId() {
-        return cinemaHallId;
+    public Long getLocationId() {
+        return locationId;
     }
 
     public void setLocationId(Long cinemaHallId) {
-        this.cinemaHallId = cinemaHallId;
+        this.locationId = cinemaHallId;
     }
 
     public String getShowTime() {

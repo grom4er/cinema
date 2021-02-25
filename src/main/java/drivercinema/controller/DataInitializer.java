@@ -27,7 +27,7 @@ public class DataInitializer {
         roleService.add(adminRole);
         roleService.add(driverRole);
         User userAdmin = new User();
-        userAdmin.setPhoneNumber("admin@gmail.com");
+        userAdmin.setPhoneNumber("+380934328100");
         userAdmin.setPassword("12345");
         userAdmin.setUserRole(Set.of(adminRole));
         userService.add(userAdmin);

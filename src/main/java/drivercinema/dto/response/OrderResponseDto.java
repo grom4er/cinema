@@ -36,7 +36,7 @@ public class OrderResponseDto {
         return userPhoneNumber;
     }
 
-    public void serDriverPhoneNumber(String userEmail) {
+    public void setDriverPhoneNumber(String userEmail) {
         this.userPhoneNumber = userEmail;
     }
 }
