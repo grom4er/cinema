@@ -1,4 +1,4 @@
-#Drive-in cinema service
+# Drive-in cinema service
 <details>
   <summary>Short Description</summary>
     Project implementation of the logic of the internal structure for the service of the open-air cinema. Has the ability to display information about active movies and sessions. Also has the ability to buy tickets, view user history and user registration.
@@ -8,32 +8,30 @@ Java, Hibernate, Spring.
 
 <details>
   <summary>Full Description</summary>
-#Stand-up ticket shop
+# Drive-in cinema service
 Implementation of an online store with default functionality written in Java.
 
-##Structure
+## Structure
 
-###### The project has an N-tier structure and consists of the layers:
+##### The project has an N-tier structure and consists of the layers:
 * Database layer;
 * DAO layer (JDBC API);
 * Service layer(contains the business logic);
 * Layer with controllers.
 
-###### Clients can perform the following actions:
+##### Client functions:
 
-* register on the store's website;
-* log in;
-* look through events sold at the store;
-* add tickets to their cart;
-* delete tickets from the cart;
-* place orders.
+* Registration
+* Log in system;
+* Look active events
+* Buy ticket to event
+* Lock history of tickets
 
-###### Admins in their turn can:
+##### Admin function:
 
-* view information about registered users;
-* view all orders placed at the store;
-* add new locations, events and sessions;
-* modify exist sessions.
+* Take information about user
+* Add new information in database LIKE: new Movie, new Session e.t.c
+* Modify exist sessions.
 
 ## Technologies
 
