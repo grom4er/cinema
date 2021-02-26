@@ -2,14 +2,16 @@
 <details>
   <summary>Short Description</summary>
     Project implementation of the logic of the internal structure for the service of the open-air cinema. Has the ability to display information about active movies and sessions. Also has the ability to buy tickets, view user history and user registration.
+
 Technologies used:
 Java, Hibernate, Spring.
 </details>
 
 <details>
   <summary>Full Description</summary>
-# Drive-in cinema service
-Implementation of an online store with default functionality written in Java.
+
+### Drive-in cinema service
+### Implementation of an online store with default functionality written in Java.
 
 ## Structure
 
@@ -27,7 +29,7 @@ Implementation of an online store with default functionality written in Java.
 * Buy ticket to event
 * Lock history of tickets
 
-##### Admin function:
+##### Admin functions:
 
 * Take information about user
 * Add new information in database LIKE: new Movie, new Session e.t.c
